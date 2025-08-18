@@ -1,1 +1,3 @@
 # Calculator
+
+A calculator is a device, either mechanical or electronic, used for performing mathematical calculations. It can range from simple devices that perform basic arithmetic operations like addition, subtraction, multiplication, and division, to more complex ones capable of handling advanced functions such as square roots, logarithms, trigonometric functions, and even programming. Calculators are widely used in various settings, including schools, offices, and homes, to quickly and accurately solve mathematical problems. 
