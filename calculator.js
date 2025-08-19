@@ -14,14 +14,29 @@ function divide(a,b) {
     return a / b
 };
 
-add(3,4)
-add("3","4")
+let firstNum = 0;
+let secondNum = 0;
+let operator = '+';
 
-subtract(3,4)
-subtract("3","4")
+function operate (a,b, operator) {
+    if (operator == '+') {
+        add(a,b);
+    }
 
-multiply(3,4)
-multiply("3","4")
+    else if (operator == '-') {
+        subtract(a,b);
+    }
 
-divide(3,4)
-divide("3","4")
+    else if (operator == '*') {
+        multiply(a,b);
+    }
+
+    else if (operator == '/') {
+        divide(a,b);
+    }
+
+    else {
+        alert("Invalid Operator")
+        return;
+    }
+};
