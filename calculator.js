@@ -37,6 +37,7 @@ function operate (a,b, operator) {
 
     else {
         alert("Invalid Operator")
+        console.log("Invalid Operator")
         return;
     }
 };
