@@ -41,3 +41,22 @@ function operate (a,b, operator) {
         return;
     }
 };
+
+function display_num (num){
+    // Select the element "display" of the calculator
+    let display = document.querySelector(".display");
+    // Extract and save the value of the number clicked
+    numVal = num.target.textContent;
+    console.log(numVal)
+    // Add the content of the number clicked in the "display element"
+    display.textContent += numVal;
+
+};
+
+let numbers = document.querySelectorAll(".num");
+numbers.forEach( function (elem) {
+    if ((elem.textContent != ' ')) 
+        {
+            console.log(elem.textContent)
+            elem.addEventListener("click",display_num)}
+    })
