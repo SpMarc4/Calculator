@@ -1,26 +1,23 @@
 function add(a,b) {
-    let result = Number(a) + Number(b)
+    let result = Math.round((Number(a) + Number(b))*100)/100
     return String(result)
 };
 
 function subtract(a,b) {
-    let result = Number(a) - Number(b)
+    let result = Math.round((Number(a) - Number(b))*100)/100
     return String(result)
 };
 
 function multiply(a,b) {
-    let result = Number(a) * Number(b)
+    let result = Math.round((Number(a) * Number(b))*100)/100
     return String(result)
 };
 
 function divide(a,b) {
-    let result = Number(a) / Number(b)
+    let result = Math.round((Number(a) / Number(b))*100)/100
     return String(result)
 };
 
-let firstNum = 0;
-let secondNum = 0;
-let operator = '+';
 
 function operate (a,b, operator) {
     if (operator == '+') {
@@ -36,14 +33,18 @@ function operate (a,b, operator) {
     }
 
     else if (operator == '/') {
+        if (b == '0') 
+            {return 'Error: Division by 0'};
         return divide(a,b);
     }
 
     else {
-        alert("Invalid Operator")
+        
         console.log("Invalid Operator")
-        return;
+        return a;
     }
+    
+
 };
 
 
@@ -61,7 +62,7 @@ let display = document.querySelector(".display");
 
 // Select special characters from the DOM
 
-let extraButtons = document.querySelector(".eb")
+let extraButtons = document.querySelectorAll(".eb")
 
 // Initialize variable value 1 aka accumulator
 
@@ -119,28 +120,30 @@ numbers.forEach( function (num) {
 
 // Operate if the operand is not null
 
-function operandOperate (opClicked) {
+function operandUpdate (opClicked) {
     // If the operand is != ''  operate value 1 and value 2
-    if (operand != '') {
-    
-        // Update value 1 to the result of the operation
+    // Update value 1 to the result of the operation
+    if ((operand != '') && (value1 != '') && (value2 != '')) {
         value1 = operate(value1,value2,operand);
-        
+            
         // Update value 2 to ''
         value2 = '';
+        operand = '';
+        
     }
-}
 
-// Update the operand
-
-function operandUpdate (opClicked) {
+    else if ((operand == '') && (value1 != '')) {
+        operand = opClicked
+    }
     
-    // Update the operation
-    operand = opClicked
-    
-    // Display of the values
-    updateDisplay()
+    }
 
+function valueUpdate () {
+    value1 = operate(value1,value2,operand);
+            
+    // Update value 2 to ''
+    value2 = '';
+    operand = '';
 }
 
 // We create an event listener to update the operand when it's clicked
@@ -148,8 +151,8 @@ function operandUpdate (opClicked) {
 operands.forEach( function (op) {
         op.addEventListener("click", 
             function () {
-                operandOperate(op.textContent);
-                operandUpdate(op.textContent);}
+                operandUpdate(op.textContent);
+                updateDisplay();}
             );
     })
 
@@ -161,6 +164,21 @@ operands.forEach( function (op) {
 // to extract characters from the end to the start.
 // value2 -> operand -> value1
 
+function undo() {
+    if (value2 != '') {
+        value2 = value2.slice(0,value2.length -1);
+    }
+
+    else if (operand != '') {
+        operand = '';
+    }
+
+    else if (value1 != '') {
+        value1 = value1.slice(0,value1.length -1);
+
+    };
+    updateDisplay();
+};
 
 // The function clear will be responsible of reset all the values
 
@@ -168,10 +186,35 @@ function clear() {
     // Reset of the values and operand
     value1 = '';
     value2 = '';
-    operand = '';
-    updateDisplay()
+    operand = ''; 
 
-}
+};
 
+
+// We create an event listener to apply the functions of the extra
+// buttons.
+
+extraButtons.forEach(
+    function (eb) {
+        if (eb.textContent == 'Undo') {
+            eb.addEventListener("click", () => undo());
+        }
+
+        else if (eb.textContent == 'Clear') {
+            eb.addEventListener("click", function () {
+                clear();
+                updateDisplay();
+            });
+        }
+        
+        else if (eb.textContent == '=') {
+            eb.addEventListener("click", function() 
+                {   valueUpdate(operand);
+                    updateDisplay();
+                    clear();
+                });
+        }
+    }
+)
 
 
