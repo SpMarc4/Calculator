@@ -2,6 +2,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: black;
+    text-shadow: 0.1px 0.1px 0px gray,
+    -0.1px 0.1px 0px gray,
+    -0.1px -0.1px 0px gray,
+    0.1px -0.1px 0px gray;
+    font-size: 18px;
 }
 
 .calculator {
@@ -10,25 +16,32 @@ body {
     min-height: 300px;
     flex-direction: column;
     justify-content: center;
-    border: solid black ;
+    border: solid #6cb2be ;
+    border-radius: 10px;
 
 }
 
 .display {
     display: flex;
-    width: 300px;
+    min-width: 300px;
     height: 50px;
     font-size: 18px;
-    margin: 10px;
+    padding: 10px;
     justify-content: flex-end;
+    background-color: rgba(128, 128, 128, 0.05) ;
+
+    margin: 2px;
     align-items: flex-end;
 }
 
 .keyboard{
     display: flex;
     flex: 1;
+    min-height: 250px;
+    min-width: 250px;
     align-items: stretch;
-    border: solid black 1px;
+    border: solid skyblue 1px;
+    
 }
 
 .numbers {
@@ -43,10 +56,14 @@ body {
 .numbers .num {
     display: flex;
     box-sizing: border-box;
-    flex: 33.33%;
+    flex: 30.33%;
     justify-content: center;
     align-items: center;
-    border: solid black 1px;
+    border: solid skyblue 0.2px;
+    background-color: #E7FAFE;
+    border-radius: 5px;
+    margin: 1px;
+
 
 }
 
@@ -60,6 +77,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    
     flex: 35%;
 }
 
@@ -68,7 +86,12 @@ body {
     justify-content: center;
     align-items: center;
     flex: 1;
-    border: solid black 1px;
+    border: solid skyblue 1px;
+    background-color: #E7FAFE;
+    border-radius: 5px;
+    margin: 1px;
+
+
 }
 
 .extra-buttons {
@@ -83,6 +106,10 @@ body {
     flex: 32%;
     justify-content: center;
     align-items: center;
-    border: solid black 1px;
+    border: solid skyblue 1px;
+    background-color: #E7FAFE;
+    border-radius: 10px;
+    margin: 1px;
+
 
 }
