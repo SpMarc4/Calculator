@@ -83,9 +83,16 @@ display.textContent = value1+operand+value2;
 
 // Creation of a function to update the display
 
-function updateDisplay() {
+function updateDisplayValue() {
     display.textContent = value1+operand+value2;
 };
+
+// Creation of a function to update the display but not the operand
+
+function updateDisplayOperand() {
+    display.textContent = value1;
+};
+
 
 
 // If there's not operand we accumulate the clicked value in value 1
@@ -101,7 +108,7 @@ function valueAccumulator(value) {
         console.log(`Value2 : ${value2}`)
 
     }
-    updateDisplay()
+    updateDisplayValue()
 
 }
 
@@ -128,7 +135,7 @@ function operandUpdate (opClicked) {
             
         // Update value 2 to ''
         value2 = '';
-        operand = '';
+        operand = opClicked;
         
     }
 
@@ -152,7 +159,7 @@ operands.forEach( function (op) {
         op.addEventListener("click", 
             function () {
                 operandUpdate(op.textContent);
-                updateDisplay();}
+                updateDisplayOperand();}
             );
     })
 
@@ -177,7 +184,7 @@ function undo() {
         value1 = value1.slice(0,value1.length -1);
 
     };
-    updateDisplay();
+    updateDisplayValue();
 };
 
 // The function clear will be responsible of reset all the values
@@ -203,14 +210,14 @@ extraButtons.forEach(
         else if (eb.textContent == 'Clear') {
             eb.addEventListener("click", function () {
                 clear();
-                updateDisplay();
+                updateDisplayValue();
             });
         }
         
         else if (eb.textContent == '=') {
             eb.addEventListener("click", function() 
                 {   valueUpdate(operand);
-                    updateDisplay();
+                    updateDisplayValue();
                     clear();
                 });
         }
