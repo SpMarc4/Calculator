@@ -18,8 +18,9 @@ body {
     justify-content: center;
     border: solid #6cb2be ;
     border-radius: 10px;
-
+    
 }
+
 
 .display {
     display: flex;
@@ -63,9 +64,12 @@ body {
     background-color: #E7FAFE;
     border-radius: 5px;
     margin: 1px;
-
-
 }
+
+.numbers .num:hover {
+    cursor: pointer;
+}
+
 
 .buttons {
     box-sizing: border-box;
@@ -94,6 +98,11 @@ body {
 
 }
 
+.operators .op:hover {
+    cursor: pointer;
+}
+
+
 .extra-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -112,4 +121,8 @@ body {
     margin: 1px;
 
 
+}
+
+.eb:hover {
+    cursor: pointer;
 }
